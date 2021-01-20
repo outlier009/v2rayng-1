@@ -28,8 +28,8 @@ jobs:
           DIST_TAG_FOUND=`curl -H "Accept: application/vnd.github.v3+json" -H "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" -s ${DIST_TAGS_URL} --connect-timeout 5 | grep "\"name\"\: \"${Qlatest_version}\""` || true
           if [ -z ${DIST_TAG_FOUND} ]; then
             rm -rf *
-            wget https://github.com/$repos/releases/download/$Qlatest_version/v2rayNG_${Qlatest_version}_arm64-v8a.apk
-            mv v2rayNG_$Qlatest_version_arm64-v8a.apk v2rayng.apk
+            wget -q https://github.com/$repos/releases/download/$Qlatest_version/v2rayNG_${Qlatest_version}_arm64-v8a.apk
+            mv v2rayNG_${Qlatest_version}_arm64-v8a.apk v2rayng.apk
             sha256sum v2rayng.apk > sha256sum.txt
       
             git add .
